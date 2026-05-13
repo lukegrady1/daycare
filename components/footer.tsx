@@ -6,7 +6,7 @@ import { Newsletter } from "./newsletter";
 export function Footer() {
   return (
     <footer className="bg-cream-deep border-t border-line mt-24">
-      <div className="container-x py-16">
+      <div className="container-x pt-16 pb-28 lg:pb-16">
         <div className="grid md:grid-cols-12 gap-10 md:gap-12">
           <div className="md:col-span-5 max-w-md">
             <div className="flex items-center gap-2">

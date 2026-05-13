@@ -98,7 +98,10 @@ function Hero() {
                 hue="warm"
                 rotate={2.5}
                 className="absolute inset-0 shadow-card"
-                label="Child painting at a low wooden table"
+                label="Kids gathered around a classroom table"
+                src="https://images.unsplash.com/photo-1709375635395-7774ae07995a?auto=format&fit=crop&q=80&w=1200"
+                priority
+                sizes="(min-width: 1024px) 460px, 90vw"
               />
               {/* polaroid */}
               <div
@@ -106,9 +109,11 @@ function Hero() {
                 style={{ transform: "rotate(-7deg)" }}
               >
                 <Photo
-                  hue="sage"
+                  hue="warm"
                   className="aspect-[4/5]"
-                  label="A candid moment in the garden"
+                  label="Paints and brushes set out for a project"
+                  src="https://images.unsplash.com/photo-1564429097439-e400382dc893?auto=format&fit=crop&q=80&w=600"
+                  sizes="208px"
                 />
                 <p className="absolute bottom-2 left-0 right-0 text-center font-accent text-xl text-ink-soft">
                   Tuesday — paint day
@@ -116,11 +121,11 @@ function Hero() {
               </div>
               {/* scribble note */}
               <div
-                className="hidden md:flex absolute -right-6 top-6 items-end gap-1 text-ink-soft"
+                className="hidden md:flex absolute -right-6 top-6 items-end gap-1 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
                 style={{ transform: "rotate(8deg)" }}
               >
                 <span className="font-accent text-2xl">look how focused</span>
-                <ScribbleArrow className="w-12 h-10 text-ink-soft -translate-y-1" />
+                <ScribbleArrow className="w-12 h-10 text-white -translate-y-1" />
               </div>
             </div>
           </FadeIn>
@@ -188,12 +193,42 @@ function WhyUsTriad() {
   );
 }
 
-const dayMoments: { time: string; caption: string; hue: "warm" | "sage" | "butter" | "sky" | "deep" }[] = [
-  { time: "7:30", caption: "arrival snuggles", hue: "warm" },
-  { time: "9:00", caption: "circle time", hue: "butter" },
-  { time: "10:15", caption: "outside, all weather", hue: "sage" },
-  { time: "12:00", caption: "family-style lunch", hue: "deep" },
-  { time: "1:00", caption: "rest, real beds", hue: "sky" },
+const dayMoments: {
+  time: string;
+  caption: string;
+  hue: "warm" | "sage" | "butter" | "sky" | "deep";
+  src?: string;
+}[] = [
+  {
+    time: "7:30",
+    caption: "arrival snuggles",
+    hue: "warm",
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=900",
+  },
+  {
+    time: "9:00",
+    caption: "circle time",
+    hue: "butter",
+    src: "https://images.unsplash.com/photo-1540151812223-c30b3fab58e6?auto=format&fit=crop&q=80&w=900",
+  },
+  {
+    time: "10:15",
+    caption: "outside, all weather",
+    hue: "sage",
+    src: "https://images.unsplash.com/photo-1538406375170-73dc8a90ab92?auto=format&fit=crop&q=80&w=900",
+  },
+  {
+    time: "12:00",
+    caption: "family-style lunch",
+    hue: "deep",
+    src: "https://images.unsplash.com/photo-1502031560955-34b542d0a80b?auto=format&fit=crop&q=80&w=900",
+  },
+  {
+    time: "1:00",
+    caption: "rest, real beds",
+    hue: "sky",
+    src: "https://images.unsplash.com/photo-1656634064343-39ff5269d651?auto=format&fit=crop&q=80&w=900",
+  },
   { time: "3:30", caption: "studio time", hue: "warm" },
 ];
 
@@ -231,6 +266,8 @@ function DayInLifeTeaser() {
                     className="aspect-[3/4] md:aspect-[4/5] w-full"
                     label={`${m.time} ${m.caption}`}
                     rotate={i % 2 === 0 ? -1 : 1}
+                    src={m.src}
+                    sizes="(min-width: 768px) 18vw, 90vw"
                   />
                   <div className="absolute top-3 left-3 bg-cream/90 backdrop-blur px-2.5 py-1 rounded font-accent text-xl text-ink shadow-soft">
                     {m.time} — {m.caption}
@@ -258,6 +295,7 @@ const programs = [
     age: "6 weeks – 12 months",
     line: "Calm, attached, and full of soft places to land.",
     hue: "warm" as const,
+    src: "https://images.unsplash.com/photo-1648159643766-1ba916a2bccf?auto=format&fit=crop&q=80&w=900",
   },
   {
     href: "/programs/toddlers",
@@ -265,6 +303,7 @@ const programs = [
     age: "12 – 24 months",
     line: "Big feelings, small bodies. We meet both.",
     hue: "butter" as const,
+    src: "https://images.unsplash.com/photo-1522700373732-73f561debf0b?auto=format&fit=crop&q=80&w=900",
   },
   {
     href: "/programs/preschool",
@@ -272,6 +311,7 @@ const programs = [
     age: "2 – 4 years",
     line: "Project-based days, mud-pie afternoons.",
     hue: "sage" as const,
+    src: "https://images.unsplash.com/photo-1578349035260-9f3d4042f1f7?auto=format&fit=crop&q=80&w=900",
   },
   {
     href: "/programs/pre-k",
@@ -279,6 +319,7 @@ const programs = [
     age: "4 – 5 years",
     line: "Reading, writing, and confident kindergarteners.",
     hue: "sky" as const,
+    src: "https://images.unsplash.com/photo-1684335269060-55d7440b5d8c?auto=format&fit=crop&q=80&w=900",
   },
 ];
 
@@ -310,6 +351,8 @@ function ProgramsGrid() {
                     hue={p.hue}
                     className="aspect-[4/5] transition-transform duration-700 group-hover:scale-[1.04]"
                     label={`${p.name} program`}
+                    src={p.src}
+                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
                   />
                 </div>
                 <div className="p-6">
@@ -353,7 +396,13 @@ function Testimonial() {
               isn&rsquo;t our daycare — it&rsquo;s our village.
             </blockquote>
             <figcaption className="mt-8 flex items-center justify-center gap-4">
-              <Photo hue="sage" className="w-14 h-14 rounded-full" label="Parent portrait" />
+              <Photo
+                hue="sage"
+                className="w-14 h-14 rounded-full"
+                label="Maya R., parent"
+                src="https://images.unsplash.com/photo-1569925444984-9e2e5fc3d1fb?auto=format&fit=facearea&facepad=2.5&q=80&w=200"
+                sizes="56px"
+              />
               <div className="text-left">
                 <div className="font-display text-lg">Maya R.</div>
                 <div className="text-ink-soft text-[14px]">
